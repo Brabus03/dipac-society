@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DIPAC Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/frontend/css/styles.css" />
+    <link rel="stylesheet" href="/frontend/css/dashboard.css" />
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-shell">
+      <aside>
+        <a class="wordmark" href="/">DIPAC <span>Society</span></a>
+        <p class="portal-label">INTELLIGENCE<br />PORTAL · 2026</p>
+        <nav class="side-nav"><a class="active" href="#overview">Overview</a><a href="#event-analysis">Event Analysis</a><a href="#event-comparison">Event Comparison</a><a href="#executive-report">Executive Report</a><a href="#events-data">Event performance</a><a href="#ai">AI insights</a><a href="#archive">AI Analyzer</a><a href="#account">Account</a></nav>
+        <button id="logout" class="logout">Sign out ↗</button>
+      </aside>
+      <main class="dashboard-main">
+        <header class="dashboard-header"><div><p class="section-index">PRIVATE WORKSPACE</p><h1>Good evening,<br /><em id="user-name">DIPAC team</em></h1></div><div class="live"><i></i> LIVE DATA · JUL 2026</div></header>
+        <section id="overview"><div class="metrics metrics-5"><article><p>Total Revenue</p><strong id="revenue">—</strong><small>Selected archived events</small></article><article><p>Net Profit</p><strong id="profit">—</strong><small>After costs & sharing</small></article><article><p>Total Collective Share</p><strong id="total-collective-share">—</strong><small>Across uploaded reports</small></article><article><p>Total Pax</p><strong id="pax">—</strong><small>Guests attended</small></article><article><p>Transactions</p><strong id="transactions">—</strong><small>Across all events</small></article></div></section>
+        <section class="report-import" id="archive">
+          <div><p class="section-index">EVENT REPORTS</p><h2>Import <em>PDF report.</em></h2><p>Unggah laporan setelah event. Sistem akan membaca metrik, memperbarui dashboard, dan membuat rekomendasi untuk event berikutnya.</p></div>
+          <form id="report-form" enctype="multipart/form-data">
+            <label>Event name<input name="event_name" placeholder="Contoh: White Party STALK SCBD" required /></label>
+            <label>Event date<input name="event_date" type="date" /></label>
+            <label>Location<input name="location" placeholder="Jakarta" /></label>
+            <label class="report-file">PDF report<input name="report" type="file" accept="application/pdf,.pdf" required /></label>
+            <button class="export-button" type="submit">Analyze report ↗</button>
+            <p class="report-note" id="report-note" role="status"></p>
+          </form>
+          <div class="report-history"><p class="section-index">RECENT IMPORTS</p><div id="report-list"><p>Belum ada report yang diunggah.</p></div></div>
+        </section>
+        <section class="report-summary">
+          <p class="section-index">AI REPORT SUMMARY</p>
+          <div class="report-metrics"><article><p>Total Reports</p><strong id="report-count">0</strong></article><article><p>Report Revenue</p><strong id="report-revenue">Rp0</strong></article><article><p>Average Pax</p><strong id="report-pax">0</strong></article><article><p>Best Performing Event</p><strong id="best-event">—</strong></article></div>
+          <div class="analysis-table"><h2>Recent <em>AI analysis.</em></h2><div role="table"><div class="analysis-head" role="row"><span role="columnheader">Event</span><span role="columnheader">Pax</span><span role="columnheader">Revenue</span><span role="columnheader">Profit</span><span role="columnheader">AI Insight</span></div><div id="analysis-report-rows" role="rowgroup"></div></div></div>
+        </section>
+        <section class="event-analysis" id="event-analysis">
+          <p class="section-index">EVENT ANALYSIS</p>
+          <h2>Per-event <em>breakdown.</em></h2>
+          <div class="event-select-row"><label for="analysis-select">Pilih Event</label><select id="analysis-select"><option value="">— Belum ada report —</option></select></div>
+          <div id="analysis-empty" class="empty-analysis">Upload PDF report di bagian "Import PDF report" untuk melihat breakdown per event di sini.</div>
+          <div id="analysis-content" hidden>
+            <h3 id="an-title" class="event-title">—</h3>
+            <div class="metrics analysis-metrics">
+              <article><p>Customer Spending</p><strong id="an-spending">—</strong></article>
+              <article><p>Collective Income</p><strong id="an-income">—</strong></article>
+              <article><p>Bottle Sold</p><strong id="an-bottles">—</strong></article>
+              <article><p>Average Spending</p><strong id="an-avg">—</strong></article>
+              <article><p>Profit Contribution</p><strong id="an-profit">—</strong></article>
+              <article><p>Commission Rate</p><strong id="an-commission">—</strong></article>
+            </div>
+            <p class="section-index sub-index">TRANSACTION DETAIL</p>
+            <div class="event-table transaction-table" role="table">
+              <div class="thead" role="row"><span role="columnheader">Menu</span><span role="columnheader">Category</span><span role="columnheader">Qty</span><span role="columnheader">Price</span><span role="columnheader">Revenue</span><span role="columnheader">Share</span><span role="columnheader">Commission</span><span role="columnheader">Profit</span></div>
+              <div id="an-transaction-rows" role="rowgroup"></div>
+            </div>
+            <p class="section-index sub-index">CUSTOMER SPENDING BY MENU</p>
+            <div class="bar-chart" id="an-chart"></div>
+          </div>
+        </section>
+        <section class="event-comparison" id="event-comparison">
+          <p class="section-index">EVENT COMPARISON</p>
+          <h2>Compare <em>performance.</em></h2>
+          <div id="comparison-empty" class="empty-analysis">Butuh minimal 1 report untuk perbandingan. Upload report di bagian "Import PDF report".</div>
+          <div id="comparison-content" hidden>
+            <div class="metrics comparison-metrics">
+              <article><p>Total Customer Spending</p><strong id="cmp-spending">—</strong></article>
+              <article><p>Total Collective Income</p><strong id="cmp-income">—</strong></article>
+              <article><p>Average Commission</p><strong id="cmp-commission">—</strong></article>
+              <article><p>Best Event</p><strong id="cmp-best">—</strong></article>
+            </div>
+            <p class="section-index sub-index">EVENT PERFORMANCE SUMMARY</p>
+            <div class="event-table" role="table">
+              <div class="thead" role="row"><span role="columnheader">Event</span><span role="columnheader">Customer Spending</span><span role="columnheader">Collective Income</span><span role="columnheader">Profit</span><span role="columnheader">Commission</span></div>
+              <div id="cmp-rows" role="rowgroup"></div>
+            </div>
+            <p class="section-index sub-index">CUSTOMER SPENDING COMPARISON</p>
+            <div class="bar-chart" id="cmp-chart"></div>
+          </div>
+        </section>
+        <section class="executive-report" id="executive-report">
+          <p class="section-index">EXECUTIVE REPORT</p>
+          <h2>Strategic <em>summary.</em></h2>
+          <div class="event-select-row"><label for="executive-select">Pilih Event Report</label><select id="executive-select"><option value="">— Belum ada report —</option></select></div>
+          <div id="executive-empty" class="empty-analysis">Upload PDF report untuk melihat ringkasan eksekutif di sini.</div>
+          <div id="executive-content" hidden>
+            <div class="executive-summary">
+              <h3 id="ex-title">—</h3>
+              <dl class="executive-facts">
+                <div><dt>Customer Spending</dt><dd id="ex-spending">—</dd></div>
+                <div><dt>Collective Income</dt><dd id="ex-income">—</dd></div>
+                <div><dt>Profit Contribution</dt><dd id="ex-profit">—</dd></div>
+                <div><dt>Commission Rate</dt><dd id="ex-commission">—</dd></div>
+                <div><dt>Best Performing Menu</dt><dd id="ex-best-menu">—</dd></div>
+              </dl>
+              <p class="section-index sub-index">REKOMENDASI</p>
+              <ul id="ex-recommendations"></ul>
+            </div>
+            <p class="section-index sub-index">TRANSACTION SUMMARY</p>
+            <div class="event-table transaction-table" role="table">
+              <div class="thead" role="row"><span role="columnheader">Menu</span><span role="columnheader">Category</span><span role="columnheader">Qty</span><span role="columnheader">Revenue</span><span role="columnheader">Profit</span></div>
+              <div id="ex-transaction-rows" role="rowgroup"></div>
+            </div>
+          </div>
+        </section>
+        <section class="performance" id="events-data"><div class="dashboard-section-head"><div><p class="section-index">EVENT PERFORMANCE</p><h2>Recent <em>signals.</em></h2></div><button class="export-button" id="export">Export summary ↓</button></div><div class="event-table" role="table"><div class="thead" role="row"><span role="columnheader">Event</span><span role="columnheader">Date</span><span role="columnheader">Pax</span><span role="columnheader">Revenue</span><span role="columnheader">Profit</span></div><div id="event-rows" role="rowgroup"></div></div></section>
+        <section class="ai-section" id="ai"><p class="section-index">DIPAC AI · STRATEGY ENGINE</p><h2>What the data<br /><em>is telling us.</em></h2><div id="insights" class="insights"></div></section>
+        <section class="report-import" id="account">
+          <div><p class="section-index">ACCOUNT</p><h2>Change <em>password.</em></h2><p>Ganti password login admin. Disarankan diganti sebelum dashboard ini diakses dari internet.</p></div>
+          <form id="password-form">
+            <label>Current password<input name="current_password" type="password" required autocomplete="current-password" /></label>
+            <label>New password<input name="new_password" type="password" required minlength="8" autocomplete="new-password" /></label>
+            <label>Confirm new password<input name="confirm_password" type="password" required minlength="8" autocomplete="new-password" /></label>
+            <button class="export-button" type="submit">Update password ↗</button>
+            <p class="report-note" id="password-note" role="status"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="/frontend/js/dashboard.js"></script>
+  </body>
+</html>

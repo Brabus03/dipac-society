@@ -1,0 +1,22 @@
+# runtime data - jangan pernah di-commit, isinya data bisnis asli
+data/*.db
+data/*.db-journal
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# tooling / local-only
+.claude/
+graphify-out/
+_previous-flat-version/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# os / editor
+.DS_Store
+.vscode/

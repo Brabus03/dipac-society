@@ -1,0 +1,14 @@
+[Unit]
+Description=DIPAC Society app
+After=network.target
+
+[Service]
+Type=simple
+User=dipac
+WorkingDirectory=/opt/dipac-society
+ExecStart=/usr/bin/python3 /opt/dipac-society/backend/app.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
