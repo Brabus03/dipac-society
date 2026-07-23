@@ -45,11 +45,17 @@ DIPAC_ADMIN_PASSWORD="password-kamu-sendiri" python3 backend/app.py
 
 Password bisa diganti kapan saja lewat halaman **Account** di dashboard. Halaman publik sengaja tidak memaparkan revenue, transaksi, pax, atau analitik internal — semua itu ada di balik login.
 
-## Fitur AI Analyzer
+## Fitur dashboard (`DIPAC Intelligence Portal`)
 
-Di dashboard (`Overview → AI Analyzer`), unggah PDF report event untuk otomatis:
-- Ekstrak revenue, cost, profit, pax, ticket sales, bottle sales dari teks PDF (regex offline, tanpa API key)
-- Hitung profit margin & revenue per pax
-- Generate rekomendasi strategi bahasa Indonesia
+Semua di bawah ini ada di balik login — halaman publik tidak pernah memaparkan angka bisnis apapun.
+
+- **Overview** — 5 kartu metrik ringkasan (Total Revenue, Net Profit, Total Collective Share, Total Pax, Transactions), digabung dari semua event yang sudah diupload.
+- **Import PDF report** — upload laporan keuangan event (PDF), sistem otomatis ekstrak teksnya dan baca metriknya (regex offline, tanpa API key eksternal).
+- **Event Analysis** — breakdown per event: customer spending, collective income, bottle sold, average spending, profit contribution, commission rate, tabel transaksi, dan bar chart.
+- **Event Comparison** — bandingkan performa semua event sekaligus (total spending, income, rata-rata komisi, event terbaik).
+- **Executive Report** — ringkasan strategis per event plus rekomendasi otomatis dalam Bahasa Indonesia (mis. saran kapasitas VIP, benchmark menu terlaris).
+- **Event Performance** — tabel riwayat semua event dengan tombol export summary.
+- **AI Insights** — insight naratif yang di-generate dari data event yang sudah diupload.
+- **Account** — ganti password admin sendiri, kapan saja.
 
 Kalau `PyMuPDF`/`pdfplumber` tidak terpasang, sistem otomatis coba `pdftotext` (poppler) sebagai fallback; kalau tetap tidak ada, ekstraksi teks akan kosong dan analisis akan meminta report yang lebih lengkap.
