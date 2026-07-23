@@ -2,6 +2,14 @@
 
 Landing page publik + DIPAC Intelligence Dashboard privat untuk event promotion business, dengan fitur import & analisis PDF report otomatis. Dibangun full-stack dengan Python standard library saja (tanpa framework) di sisi server, dan vanilla HTML/CSS/JS di sisi client.
 
+## Screenshot
+
+| | |
+|---|---|
+| ![Hero](docs/screenshots/01-hero.jpg) | ![About](docs/screenshots/02-about.jpg) |
+| ![Events](docs/screenshots/03-events.jpg) | ![Event detail](docs/screenshots/04-event-detail.jpg) |
+| ![Journal](docs/screenshots/05-journal.jpg) | ![Login](docs/screenshots/06-login.jpg) |
+
 ## Stack
 
 - **Backend**: Python `http.server` (ThreadingHTTPServer) + SQLite, tanpa framework
