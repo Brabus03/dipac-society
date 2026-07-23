@@ -44,7 +44,7 @@ Buka `http://localhost:8000`.
 
 Saat server pertama kali dijalankan dan belum ada user di database, akun admin dibuat otomatis:
 
-- Email: `admin@dipac.co`
+- Email: 
 - Password: diambil dari environment variable `DIPAC_ADMIN_PASSWORD` kalau di-set; kalau tidak, sistem generate password acak dan menampilkannya sekali di log server saat startup.
 
 ```bash
